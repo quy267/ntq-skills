@@ -2,7 +2,7 @@
 name: ntq:domain-modeling
 description: Build and sharpen a project's domain model. User-invoked when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model. When you wrap up a modeling session (user-triggered — they say done or ask to review the model), by default runs a multi-AI review (Codex + agy) of CONTEXT.md + the ADRs you edited that conversation; --no-review skips it.
 disable-model-invocation: true
-source: mattpocock/skills@6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461
+source: mattpocock/skills@16a2a5cd00b4416f673f4ff38c7971a04dd708e7
 license: MIT
 ---
 

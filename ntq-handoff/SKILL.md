@@ -3,7 +3,7 @@ name: ntq:handoff
 description: Compact the current conversation into a handoff document for another agent to pick up.
 argument-hint: "What will the next session be used for?"
 disable-model-invocation: true
-source: mattpocock/skills@6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461
+source: mattpocock/skills@16a2a5cd00b4416f673f4ff38c7971a04dd708e7
 license: MIT
 ---
 

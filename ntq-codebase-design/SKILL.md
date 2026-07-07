@@ -2,7 +2,7 @@
 name: ntq:codebase-design
 description: Shared vocabulary for designing deep modules. User-invoked when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.
 disable-model-invocation: true
-source: mattpocock/skills@6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461
+source: mattpocock/skills@16a2a5cd00b4416f673f4ff38c7971a04dd708e7
 license: MIT
 ---
 

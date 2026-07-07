@@ -14,9 +14,28 @@ Canonical source-of-truth for personal `ntq:` skills used from both Claude Code 
 - Claude Code: `~/.claude/skills/ntq-*`
 - Codex: `~/.agents/skills/ntq-*`
 
+## Skills
+
+Vendored from `mattpocock/skills` (MIT), renamed to the `ntq:` namespace, with cross-references rewritten to `ntq:<slug>`:
+
+- **Design / modeling:** `codebase-design`, `domain-modeling`, `improve-codebase-architecture`
+- **Spec / planning:** `grilling`, `grill-with-docs`, `to-prd`, `to-issues`
+- **Build ops:** `resolving-merge-conflicts`
+- **Learning / writing:** `teach`, `handoff`, `edit-article`
+
+`codebase-design`, `domain-modeling`, and `handoff` carry NTQ customizations (Java/Go/Spring analysis lens, evidence rules, Multi-AI Review harness hooks) on top of upstream — preserve them across refreshes.
+
+Add or refresh a skill with the helper (rewrites frontmatter + NOTICE + cross-refs, writes to a dir you choose so refreshes can be staged and diffed before overwrite):
+
+```bash
+python3 ~/.claude/scripts/vendor_ntq_skill.py --ref <sha> \
+  --src-path skills/<category>/<slug> --slug <slug> \
+  --dest-root ~/ntq-skills --ntq-slugs <comma-list-of-ntq-slugs>
+```
+
 ## Drift Policy
 
-The current upstream base is `mattpocock/skills@6eeb81b5fcfeeb5bd531dd47ab2f9f2bbea27461`.
+The current upstream base is `mattpocock/skills@16a2a5cd00b4416f673f4ff38c7971a04dd708e7`.
 
 Review upstream periodically, for example quarterly, and rebase or refresh from that pinned lineage only when the update is worth the maintenance cost. Keep NTQ customizations small, re-run symlink/link checks after each refresh, and commit every change here so runtime state remains reversible.
 

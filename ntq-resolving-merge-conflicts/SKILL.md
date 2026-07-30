@@ -1,7 +1,6 @@
 ---
 name: ntq:resolving-merge-conflicts
 description: "Use when you need to resolve an in-progress git merge/rebase conflict."
-disable-model-invocation: true
 source: mattpocock/skills@16a2a5cd00b4416f673f4ff38c7971a04dd708e7
 license: MIT
 ---

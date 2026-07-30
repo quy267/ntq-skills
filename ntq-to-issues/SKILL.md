@@ -10,7 +10,7 @@ license: MIT
 
 Break a plan into independently-grabbable issues using vertical slices (tracer bullets).
 
-The issue tracker and triage label vocabulary should have been provided to you — run `/setup-matt-pocock-skills` if not.
+The issue tracker and triage label vocabulary should be provided to you inline by the user (e.g. Jira project + field map); if a persistent tracker adapter exists it lives at `~/ntq-skills/_shared/tracker-jira-pb.md`.
 
 ## Process
 

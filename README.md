@@ -41,11 +41,11 @@ Review upstream periodically, for example quarterly, and rebase or refresh from 
 
 ### Automated drift check
 
-`~/.claude/scripts/check_ntq_skills_drift.py` reads the pinned commit from each `ntq-*/SKILL.md` `source:` field, queries upstream HEAD via `git ls-remote` (read-only, no clone), and flags when upstream has moved away from the pin. A systemd user timer (`ntq-skills-drift.timer`, daily 07:55) runs it and writes `~/.cache/ntq-skills/upstream-drift.json`; `morning-brief.sh` surfaces any drift in the 08:00 digest. The check only reads skills and never re-vendors — refreshing the pin stays the manual step above.
+`~/.claude/scripts/check_ntq_skills_drift.py` reads each skill's `source: <repo>@<pin>` and, for the files that skill actually vendored, compares the upstream **blob SHA** (content hash from the git tree) at the pin vs current HEAD. It classifies each skill `unchanged` / `changed` (a vendored file's upstream content moved) / `moved` (the upstream dir was renamed). Because it compares only vendored files' content — not the pinned sha — it ignores the ~100 unrelated commits/month and upstream-only files (e.g. `agents/*.yaml`), so it flags a skill only when that skill genuinely warrants review. A systemd user timer (`ntq-skills-drift.timer`, daily 07:55, `SuccessExitStatus=10`) runs it and writes `~/.cache/ntq-skills/upstream-drift.json`; `morning-brief.sh` surfaces the changed/moved skills in the 08:00 digest. Read-only (GitHub tree API + `git ls-remote`); never re-vendors — refreshing a skill stays the manual step above.
 
 Run on demand:
 
-- `python3 ~/.claude/scripts/check_ntq_skills_drift.py` — human summary (exit `0` in sync, `10` drift, `1` error)
+- `python3 ~/.claude/scripts/check_ntq_skills_drift.py` — human summary (exit `0` all vendored skills current, `10` ≥1 changed/moved, `1` error)
 - `python3 ~/.claude/scripts/check_ntq_skills_drift.py --json` — full result
 
 After a refresh, bump the `source:` field in each refreshed skill (the check keys off it) and update the base commit line above.
